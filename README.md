@@ -1,5 +1,7 @@
 # china_prov_city_area_street_data
-原作者2014年提交的博文，私以为应该是2014年中国省市区街道数据库，找了好久，为方便大家查询，特分享mysql数据
+2013年中国省市区街道数据库，找了好久，为方便大家查询，特分享mysql数据。
+
+anyway，如果觉得数据不够新，可以爬一下 附 2015年的数据！
 
 ## 表结构
 ```
@@ -12,6 +14,13 @@ CREATE TABLE `stone_china_pro_city_area_street` (
   `remark` varchar(255) DEFAULT NULL COMMENT '备注'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ```
+
+## 附
+
++ [国家统计局2013年统计用区划代码和城乡划分代码(截止2013年8月31日))](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2013/index.html)
+
++ [国家统计局2015年统计用区划代码和城乡划分代码(截止2015年09月30日)](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2015/index.html)
+
 
 ## 其他
 
