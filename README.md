@@ -3,6 +3,10 @@
 
 anyway，如果觉得数据不够新，可以爬一下 附 2015年的数据！
 
+## 关于crawler
+
+crawler目录 是一个 采用 QueryList开源库 来爬取山东省的市、区、镇、村的demo。 下载到本地，执行shandong.php 即可获取。欢迎交流指正
+
 ## 表结构
 ```
 CREATE TABLE `stone_china_pro_city_area_street` (
