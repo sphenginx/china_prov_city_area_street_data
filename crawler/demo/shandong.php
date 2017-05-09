@@ -33,18 +33,18 @@ foreach ($citys as $key => $city) {
     $countryUrl = formatCityUrl($url, $city['url']);
     $countrys = getCountry($countryUrl);
     foreach ($countrys as $key => $country) {
-        $values[] = "(".$country['id'].", ".$city['keyid'].", '".$country['name']."', 2)";
+        $values[] = "(".$country['id'].", ".$city['id'].", '".$country['name']."', 2)";
         // $provinces[] = ['id' => $country['id'], 'keyid' => $city['id'], 'name' => $country['name']];
         if ($country['url']) {
             $townUrl = formatCityUrl($countryUrl, $country['url']);
             $towns = getTown($townUrl);
             foreach ($towns as $key => $town) {
-                $values[] = "(".$town['id'].", ".$country['keyid'].", '".$town['name']."', 3)";
+                $values[] = "(".$town['id'].", ".$country['id'].", '".$town['name']."', 3)";
                 // $provinces[] = ['id' => $town['id'], 'keyid' => $country['id'], 'name' => $town['name']];
                 $villageUrl = formatCityUrl($townUrl, $town['url']);
                 $villages = getVillage($villageUrl);
                 foreach ($villages as $key => $village) {
-                    $values[] = "(".$village['id'].", ".$town['keyid'].", '".$village['name']."', 4)";
+                    $values[] = "(".$village['id'].", ".$town['id'].", '".$village['name']."', 4)";
                     // $provinces[] = ['id' => $village['id'], 'keyid' => $town['id'], 'name' => $village['name']];
                     $count++;
                 }
