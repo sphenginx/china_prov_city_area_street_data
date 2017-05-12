@@ -50,7 +50,7 @@ class Crawler
 	        "name" => ["td:eq(1) a", "text"]
 	    );
 	    $rang = ".citytr";
-	    $html = iconv('gb2312','UTF-8', getResult($url));
+	    $html = iconv('gb2312','UTF-8', $this->_getResult($url));
 	    $citys = QueryList::Query($html, $reg, $rang, 'get', 'UTF-8')->jsonArr;
 	    return $citys;
 	}
@@ -64,7 +64,7 @@ class Crawler
 	        "name" => ["td:eq(1)", "html", 'a']
 	    );
 	    $rang = ".countytr";
-	    $html = iconv('gb2312','UTF-8', file_get_contents($url));
+	    $html = iconv('gb2312','UTF-8', $this->_getResult($url));
 	    $arrQu = QueryList::Query($html, $reg, $rang, 'get', 'UTF-8')->jsonArr;
 	    return $arrQu;
 	}
@@ -78,7 +78,7 @@ class Crawler
 	        "name" => ["td:eq(1) a", "text"]
 	    );
 	    $rang = ".towntr";
-	    $next_html = iconv('gb2312','UTF-8', file_get_contents($url));
+	    $next_html = iconv('gb2312','UTF-8', $this->_getResult($url));
 	    $towns = QueryList::Query($next_html, $reg, $rang, 'get', 'UTF-8')->jsonArr;
 	    return $towns;
 	}
@@ -91,7 +91,7 @@ class Crawler
 	        "name" => ["td:eq(2)", "text"]
 	    );
 	    $rang = ".villagetr";
-	    $next_html = iconv('gb2312','UTF-8', file_get_contents($url));
+	    $next_html = iconv('gb2312','UTF-8', $this->_getResult($url));
 	    return QueryList::Query($next_html, $reg, $rang, 'get', 'UTF-8')->jsonArr;
 	}
 
@@ -105,7 +105,8 @@ class Crawler
 	{
 		$result = file_get_contents($url);
 		if (!$result) {
-			if ($this->_retryTimes >= 3) {
+			if ($this->_retryTimes >= 2) {
+				$this->_retryTimes = 0;
 				return '';
 			}
 			$this->_retryTimes++;
