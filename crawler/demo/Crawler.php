@@ -51,8 +51,7 @@ class Crawler
 	    );
 	    $rang = ".citytr";
 	    $html = iconv('gb2312','UTF-8', $this->_getResult($url));
-	    $citys = QueryList::Query($html, $reg, $rang, 'get', 'UTF-8')->jsonArr;
-	    return $citys;
+	    return QueryList::Query($html, $reg, $rang, 'get', 'UTF-8')->jsonArr;
 	}
 
 	//获取区信息
@@ -65,8 +64,7 @@ class Crawler
 	    );
 	    $rang = ".countytr";
 	    $html = iconv('gb2312','UTF-8', $this->_getResult($url));
-	    $arrQu = QueryList::Query($html, $reg, $rang, 'get', 'UTF-8')->jsonArr;
-	    return $arrQu;
+	    return QueryList::Query($html, $reg, $rang, 'get', 'UTF-8')->jsonArr;
 	}
 
 	//获取城镇信息
@@ -78,9 +76,8 @@ class Crawler
 	        "name" => ["td:eq(1) a", "text"]
 	    );
 	    $rang = ".towntr";
-	    $next_html = iconv('gb2312','UTF-8', $this->_getResult($url));
-	    $towns = QueryList::Query($next_html, $reg, $rang, 'get', 'UTF-8')->jsonArr;
-	    return $towns;
+	    $html = iconv('gb2312','UTF-8', $this->_getResult($url));
+	    return QueryList::Query($html, $reg, $rang, 'get', 'UTF-8')->jsonArr;
 	}
 
 	//获取村信息
@@ -91,14 +88,14 @@ class Crawler
 	        "name" => ["td:eq(2)", "text"]
 	    );
 	    $rang = ".villagetr";
-	    $next_html = iconv('gb2312','UTF-8', $this->_getResult($url));
-	    return QueryList::Query($next_html, $reg, $rang, 'get', 'UTF-8')->jsonArr;
+	    $html = iconv('gb2312','UTF-8', $this->_getResult($url));
+	    return QueryList::Query($html, $reg, $rang, 'get', 'UTF-8')->jsonArr;
 	}
 
 	/**
 	 * 获取远程的数据，有重试机制（重试三次）
 	 *
-	 * @return void
+	 * @return mixed
 	 * @author Sphenginx
 	 **/
 	private function _getResult($url)
@@ -116,6 +113,7 @@ class Crawler
 		}
 	}
 
+	//格式化下一级的url
 	protected function _formatCityUrl($base, $url)
 	{
 		if (strrpos($base, '/') == strlen($base) - 1) {
